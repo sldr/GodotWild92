@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://dfcuf265r7jvn" path="res://textures/Ground079S_1K-normal.png" id="2_1bvp3"]
 [ext_resource type="Shader" uid="uid://bhj1gu3hdgw2r" path="res://crtvignette.gdshader" id="3_7mycd"]
 [ext_resource type="PackedScene" uid="uid://cyiqii0jwdecp" path="res://pause_menu.tscn" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://bc5swycowvicc" path="res://Zombies/ZType1.tscn" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://ckjwvb0n85mb2" path="res://Zombies/ZType2.tscn" id="5_lquwl"]
 [ext_resource type="Texture2D" uid="uid://bwwrfjnab80hi" path="res://textures/Ground079S_1K-rotated_50%.png" id="3_lquwl"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_7mycd"]
@@ -92,5 +94,11 @@ material_override = SubResource("StandardMaterial3D_lquwl")
 mesh = SubResource("PlaneMesh_1bvp3")
 
 [node name="PauseMenu" parent="." unique_id=1922625325 instance=ExtResource("3_h2yge")]
+
+[node name="ZT1RigidBody3D" parent="." unique_id=1637581006 instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -20)
+
+[node name="ZT2RigidBody3D" parent="." unique_id=2035213228 instance=ExtResource("5_lquwl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -20)
 
 [connection signal="timeout" from="Player/ImpulseTimer" to="Player" method="_on_impulse_timer_timeout"]

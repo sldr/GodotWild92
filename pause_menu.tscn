@@ -1,19 +1,13 @@
 [gd_scene format=3 uid="uid://cyiqii0jwdecp"]
 
 [ext_resource type="Script" uid="uid://l0nf01be2q3g" path="res://pause_menu.cs" id="1_hdmo1"]
+[ext_resource type="Resource" path="res://settings_data.tres" id="2_nwcfo"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1bvp3"]
 bg_color = Color(0.3529412, 0, 0.011764706, 0.5882353)
 
 [sub_resource type="Theme" id="Theme_lquwl"]
 Panel/styles/panel = SubResource("StyleBoxFlat_1bvp3")
-
-[sub_resource type="InputEventKey" id="InputEventKey_hdmo1"]
-device = -1
-keycode = 4194305
-
-[sub_resource type="Shortcut" id="Shortcut_nwcfo"]
-events = [SubResource("InputEventKey_hdmo1")]
 
 [sub_resource type="Animation" id="Animation_nwcfo"]
 length = 0.001
@@ -27,7 +21,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-137, 0)]
+"values": [Vector2(-162, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_hdmo1"]
@@ -43,7 +37,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-137, 0), Vector2(0, 0)]
+"values": [Vector2(-162, 0), Vector2(0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nwcfo"]
@@ -54,18 +48,20 @@ _data = {
 
 [node name="PauseMenu" type="CanvasLayer" unique_id=1922625325]
 process_mode = 3
+visible = false
 script = ExtResource("1_hdmo1")
+settingsResData = ExtResource("2_nwcfo")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1239934032]
-offset_right = 1162.0
-offset_bottom = 659.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 size_flags_horizontal = 0
 color = Color(0.44313726, 0, 0, 0.12156863)
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1000798857]
 anchors_preset = 9
 anchor_bottom = 1.0
-offset_left = -137.0
+offset_left = -162.0
 grow_vertical = 2
 
 [node name="Panel" type="Panel" parent="MarginContainer" unique_id=2120902390]
@@ -88,12 +84,52 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=109635103]
 layout_mode = 2
-text = "Pause Menu"
+text = "GAME PAUSED"
+horizontal_alignment = 1
 
 [node name="Resume" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=2026392098]
 layout_mode = 2
-shortcut = SubResource("Shortcut_nwcfo")
 text = "Resume"
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1204905988]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1586466355]
+layout_mode = 2
+text = "S E T T I N G S"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=170231373]
+layout_mode = 2
+text = "Pause smoothing"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=14408981]
+layout_mode = 2
+
+[node name="HSlider" type="HSlider" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1954833606]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.01
+scrollable = false
+
+[node name="SpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer" unique_id=2053647080]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+
+[node name="HSeparator2" type="HSeparator" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=824206453]
+layout_mode = 2
+
+[node name="Reset" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1495128127]
+layout_mode = 2
+text = "Reset Settings"
+
+[node name="Save" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=255115214]
+layout_mode = 2
+text = "Save Settings"
 
 [node name="Quit" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=206847049]
 layout_mode = 2
@@ -102,4 +138,8 @@ text = "Quit"
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1103521852]
 libraries/ = SubResource("AnimationLibrary_nwcfo")
 
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Reset" to="." method="_on_reset_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Save" to="." method="_on_save_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
