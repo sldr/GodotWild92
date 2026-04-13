@@ -21,7 +21,9 @@ public partial class pause_menu : CanvasLayer
     {
         PauseAnim = this.GetNode<AnimationPlayer>("AnimationPlayer");
         pSmoothing = this.GetNode<HSlider>("MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/HSlider");
-        pSmoothing.Value = settingsResData.pause_smoothing;
+        if (settingsResData != null) {
+            pSmoothing.Value = settingsResData.pause_smoothing;
+        }
         pSmoothScale = 40 * (float)pause_smoothing + 1;
     }
 

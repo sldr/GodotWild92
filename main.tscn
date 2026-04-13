@@ -62,7 +62,7 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1814657192]
 environment = SubResource("Environment_7mycd")
 
-[node name="Player" type="CharacterBody3D" parent="." unique_id=2109234333]
+[node name="Player" type="CharacterBody3D" parent="." unique_id=2109234333 groups=["player"]]
 process_mode = 1
 script = ExtResource("1_ig7tw")
 
@@ -93,9 +93,9 @@ mesh = SubResource("PlaneMesh_1bvp3")
 [node name="PauseMenu" parent="." unique_id=1922625325 instance=ExtResource("3_h2yge")]
 
 [node name="ZT1RigidBody3D" parent="." unique_id=1637581006 instance=ExtResource("4_1bvp3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -20)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.5, -20)
 
 [node name="ZT2RigidBody3D" parent="." unique_id=2035213228 instance=ExtResource("5_lquwl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -20)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 3, -20)
 
 [connection signal="timeout" from="Player/ImpulseTimer" to="Player" method="_on_impulse_timer_timeout"]
