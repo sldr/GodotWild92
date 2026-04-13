@@ -1,6 +1,7 @@
-[gd_resource type="Resource" format=3 uid="uid://c5ggo8ajvpxuy"]
+[gd_resource type="Resource" format=3 uid="uid://cg7nlosuxxrdw"]
 
 [ext_resource type="Script" uid="uid://chnljkumvscwj" path="res://settings_resdata.cs" id="1_ifsnd"]
 
 [resource]
 script = ExtResource("1_ifsnd")
+pause_smoothing = 1.0
