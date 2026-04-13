@@ -4,6 +4,6 @@
     <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>
   </PropertyGroup>
   <PropertyGroup>
-    <ActiveDebugProfile>BrewDrivingDebug</ActiveDebugProfile>
+    <ActiveDebugProfile>BrewDrivingDebugSLDR</ActiveDebugProfile>
   </PropertyGroup>
 </Project>

@@ -9,6 +9,13 @@
       "commandLineArgs": "--path . --debug",
       "workingDirectory": ".",
       "nativeDebugging": true
+    },
+    "BrewDrivingDebugSLDR": {
+      "commandName": "Executable",
+      "executablePath": "C:\\Godot\\Godot.Net4.6.2\\Godot_v4.6.2-stable_mono_win64.exe",
+      "commandLineArgs": "--path . --debug",
+      "workingDirectory": ".",
+      "nativeDebugging": true
     }
   }
 }
