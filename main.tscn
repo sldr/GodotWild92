@@ -1,9 +1,8 @@
-[gd_scene format=3 uid="uid://dfif4a3kgjrnt"]
+[gd_scene format=3 uid="uid://b37o32jiuxpaw"]
 
 [ext_resource type="Script" uid="uid://b4oi0urapsih6" path="res://Player.cs" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://00vuix3yd00s" path="res://textures/concrete.svg" id="2_1bvp3"]
-[ext_resource type="Script" uid="uid://c0e0ft5v1wq1h" path="res://PauseManager.cs" id="2_h2yge"]
-[ext_resource type="Script" uid="uid://l0nf01be2q3g" path="res://ToggleVisibilityOnPause.cs" id="3_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://cyiqii0jwdecp" path="res://pause_menu.tscn" id="3_h2yge"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1bvp3"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -61,17 +60,6 @@ visible = false
 material_override = SubResource("StandardMaterial3D_lquwl")
 mesh = SubResource("PlaneMesh_1bvp3")
 
-[node name="PauseManager" type="Node" parent="." unique_id=665640214]
-process_mode = 3
-script = ExtResource("2_h2yge")
-
-[node name="PauseMenu" type="CanvasLayer" parent="." unique_id=262897217]
-process_mode = 2
-script = ExtResource("3_1bvp3")
-
-[node name="ColorRect" type="ColorRect" parent="PauseMenu" unique_id=495883340]
-offset_right = 1162.0
-offset_bottom = 659.0
-color = Color(0.827451, 0, 0.5137255, 0.07058824)
+[node name="PauseMenu" parent="." unique_id=1922625325 instance=ExtResource("3_h2yge")]
 
 [connection signal="timeout" from="Player/ImpulseTimer" to="Player" method="_on_impulse_timer_timeout"]
