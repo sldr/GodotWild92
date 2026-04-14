@@ -119,7 +119,8 @@ uv1_triplanar = true
 
 [node name="Game" type="Node3D" unique_id=566603410]
 script = ExtResource("1_4c57u")
-InitialSpawnCount = 500
+InitialSpawnCount = 5000
+player = NodePath("Player")
 ZombieType1 = ExtResource("4_1bvp3")
 ZombieType2 = ExtResource("5_lquwl")
 

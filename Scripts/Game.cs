@@ -21,11 +21,14 @@ public partial class Game : Node3D
 
     public void ZombieSpawner(bool preGameStart = false)
     {
+        MultiMeshInstance3D aaa;
         if (preGameStart) {
             GD.Print("PreGameStart");
             for (int i=0; i< InitialSpawnCount; i++) {
                 float angle = (float)GD.RandRange(0, Mathf.Tau); // Random angle (0 to 360 degrees in radians)
-                float dist = (float)GD.RandRange(10d, SpawnDespawnRadius); // Random distance between 10 n SpawnDespawnRadius
+                float t = (float)GD.Randf();
+                float dist = (float)Mathf.Lerp(10d, SpawnDespawnRadius, Mathf.Sqrt(t)); // Random distance between 10 n SpawnDespawnRadius
+                //float dist = (float)GD.RandRange(10d, SpawnDespawnRadius); // Random distance between 10 n SpawnDespawnRadius
                 // Convert polar → Cartesian (XZ plane)
                 Vector3 offset = new Vector3(
                     Mathf.Cos(angle),
@@ -46,9 +49,11 @@ public partial class Game : Node3D
         var zombies = GetTree().GetNodesInGroup("zombies");
         foreach (Node node in zombies) {
             if (node is Zombie zombie) {
-                float distance = zombie.GlobalPosition.DistanceTo(player.GlobalPosition);
-                if (distance >= SpawnDespawnRadius) {
-                    zombie.QueueFree();
+                if (zombie != null && player != null) {
+                    float distance = zombie.GlobalPosition.DistanceTo(player.GlobalPosition);
+                    if (distance >= SpawnDespawnRadius) {
+                        zombie.QueueFree();
+                    }
                 }
             }
         }
