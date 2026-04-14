@@ -2,6 +2,15 @@
 
 [ext_resource type="FontFile" uid="uid://5f3v256mkhnq" path="res://font/ZOMBIE.TTF" id="1_rc4d3"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wreok"]
+bg_color = Color(0.7882353, 0, 0, 1)
+border_width_left = 3
+border_width_top = 3
+corner_radius_top_left = 67
+corner_radius_bottom_right = 121
+shadow_color = Color(1, 1, 1, 0.49019608)
+shadow_size = 5
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rc4d3"]
 bg_color = Color(1, 0, 0, 0.45882353)
 border_width_left = 3
@@ -10,6 +19,11 @@ border_color = Color(0.4627451, 0, 0, 0.7176471)
 corner_radius_top_left = 67
 corner_radius_bottom_right = 121
 
+[sub_resource type="FontVariation" id="FontVariation_rc4d3"]
+base_font = ExtResource("1_rc4d3")
+variation_transform = Transform2D(1, 0, 0, 0.9, 0, 0)
+
 [resource]
-default_font = ExtResource("1_rc4d3")
+default_font = SubResource("FontVariation_rc4d3")
+Button/styles/hover = SubResource("StyleBoxFlat_wreok")
 Button/styles/normal = SubResource("StyleBoxFlat_rc4d3")

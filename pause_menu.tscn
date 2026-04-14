@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cyiqii0jwdecp"]
 
 [ext_resource type="Script" uid="uid://l0nf01be2q3g" path="res://pause_menu.cs" id="1_hdmo1"]
-[ext_resource type="Resource" uid="uid://bgfb8caxka65b" path="res://settings_data.tres" id="2_nwcfo"]
+[ext_resource type="Resource" uid="uid://b5lbnehcden2i" path="res://settings_data.tres" id="2_nwcfo"]
 [ext_resource type="Theme" uid="uid://cqds0jix2faj0" path="res://defaultUItheme.tres" id="3_05uyy"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1bvp3"]
@@ -22,7 +22,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-162, 0)]
+"values": [Vector2(-175, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_hdmo1"]
@@ -38,7 +38,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-162, 0), Vector2(0, 0)]
+"values": [Vector2(-175, 0), Vector2(0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nwcfo"]
@@ -54,15 +54,10 @@ transform = Transform2D(2, 0, 0, 2, 0, 0)
 script = ExtResource("1_hdmo1")
 settingsResData = ExtResource("2_nwcfo")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1239934032]
-size_flags_horizontal = 0
-color = Color(0.44313726, 0, 0, 0.12156863)
-
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1000798857]
 anchors_preset = 9
 anchor_bottom = 1.0
-offset_left = -162.0
-offset_right = 92.0
+offset_left = -175.0
 grow_vertical = 2
 theme = ExtResource("3_05uyy")
 
