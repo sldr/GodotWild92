@@ -104,8 +104,10 @@ mesh = SubResource("PlaneMesh_1bvp3")
 [node name="ZT1RigidBody3D" parent="." unique_id=1637581006 instance=ExtResource("4_1bvp3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.5, -20)
 
-[node name="ZT2RigidBody3D" parent="." unique_id=2035213228 instance=ExtResource("5_lquwl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 3, -20)
-script = null
+[node name="ZT1RigidBody3D2" parent="." unique_id=98184344 instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, -10)
+
+[node name="ZT2RigidBody3D" parent="." unique_id=1169433553 instance=ExtResource("5_lquwl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 7, -20)
 
 [connection signal="timeout" from="Player/ImpulseTimer" to="Player" method="_on_impulse_timer_timeout"]

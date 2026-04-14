@@ -9,6 +9,7 @@ public partial class Player : CharacterBody3D
     [Export] public float JumpVelocity = 2.5f;
 	public Timer ImpulseTimer;
 	private Vector3 impulseAmount = Vector3.Zero;
+    private Game game = null;
 
 
     //Flags
@@ -21,7 +22,11 @@ public partial class Player : CharacterBody3D
 
     public override void _PhysicsProcess(double delta)
 	{
-		Vector3 velocity = Velocity;
+        if (game == null) {
+            game = GetTree().CurrentScene as Game;
+        }
+
+        Vector3 velocity = Velocity;
         double currentTime = ImpulseTimer.TimeLeft;
 
         // Add the gravity.
@@ -54,6 +59,12 @@ public partial class Player : CharacterBody3D
 
         Velocity = velocity;
 		MoveAndSlide();
+        for (int i =0; i<this.GetSlideCollisionCount(); i++) {
+            var collision = this.GetSlideCollision(i);
+            if (collision.GetCollider() is Zombie zombie) {
+                game.ZombieHit(zombie);
+            }
+        }
 	}
 
     public void ApplyImpulse(Vector3 impulse, float duration)

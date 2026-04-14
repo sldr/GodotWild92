@@ -5,9 +5,7 @@
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_i4jx3"]
 
-[node name="ZT2RigidBody3D" type="RigidBody3D" unique_id=1637581006 groups=["zombies"]]
-contact_monitor = true
-max_contacts_reported = 3
+[node name="ZT2RigidBody3D" type="RigidBody3D" unique_id=1169433553 groups=["zombies"]]
 script = ExtResource("1_7i3rb")
 ZombieType = 2
 
