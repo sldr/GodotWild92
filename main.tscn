@@ -113,6 +113,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, -10)
 [node name="ZT2RigidBody3D" parent="." unique_id=1169433553 instance=ExtResource("5_lquwl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 7, -20)
 
-[node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="." unique_id=1681632622]
-
 [connection signal="timeout" from="Player/ImpulseTimer" to="Player" method="_on_impulse_timer_timeout"]
