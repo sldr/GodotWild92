@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://ccq4exlh0g6xx"
-path="res://.godot/imported/28 Days Later.ttf-54a6b37854646155e88ebf0d19a3afaa.fontdata"
+uid="uid://cxdelv20wghgk"
+path="res://.godot/imported/Night of the Deads.ttf-63cd6fc0d3080c3a1e4a62158df79013.fontdata"
 
 [deps]
 
-source_file="res://font/28-days-later/28 Days Later.ttf"
-dest_files=["res://.godot/imported/28 Days Later.ttf-54a6b37854646155e88ebf0d19a3afaa.fontdata"]
+source_file="res://font/Night of the Deads.ttf"
+dest_files=["res://.godot/imported/Night of the Deads.ttf-63cd6fc0d3080c3a1e4a62158df79013.fontdata"]
 
 [params]
 
@@ -16,7 +16,7 @@ Rendering=null
 antialiasing=1
 generate_mipmaps=false
 disable_embedded_bitmaps=true
-multichannel_signed_distance_field=false
+multichannel_signed_distance_field=true
 msdf_pixel_range=8
 msdf_size=48
 allow_system_fallback=true
@@ -34,8 +34,7 @@ preload=[{
 "chars": [],
 "glyphs": [],
 "name": "New Configuration",
-"size": Vector2i(16, 0),
-&"variation_embolden": 0.0
+"size": Vector2i(16, 0)
 }]
 language_support={}
 script_support={}

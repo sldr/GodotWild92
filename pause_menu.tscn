@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cyiqii0jwdecp"]
 
 [ext_resource type="Script" uid="uid://l0nf01be2q3g" path="res://pause_menu.cs" id="1_hdmo1"]
-[ext_resource type="Resource" uid="uid://cg7nlosuxxrdw" path="res://settings_data.tres" id="2_nwcfo"]
+[ext_resource type="Resource" uid="uid://bgfb8caxka65b" path="res://settings_data.tres" id="2_nwcfo"]
 [ext_resource type="Theme" uid="uid://cqds0jix2faj0" path="res://defaultUItheme.tres" id="3_05uyy"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1bvp3"]
@@ -49,12 +49,12 @@ _data = {
 
 [node name="PauseMenu" type="CanvasLayer" unique_id=1922625325]
 process_mode = 3
+scale = Vector2(2, 2)
+transform = Transform2D(2, 0, 0, 2, 0, 0)
 script = ExtResource("1_hdmo1")
 settingsResData = ExtResource("2_nwcfo")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1239934032]
-offset_right = 1920.0
-offset_bottom = 1080.0
 size_flags_horizontal = 0
 color = Color(0.44313726, 0, 0, 0.12156863)
 
@@ -62,6 +62,7 @@ color = Color(0.44313726, 0, 0, 0.12156863)
 anchors_preset = 9
 anchor_bottom = 1.0
 offset_left = -162.0
+offset_right = 92.0
 grow_vertical = 2
 theme = ExtResource("3_05uyy")
 
@@ -71,14 +72,14 @@ theme = SubResource("Theme_lquwl")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=236995942]
 layout_mode = 2
-size_flags_horizontal = 4
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer" unique_id=682556178]
 layout_mode = 2
-theme_override_constants/margin_left = 14
-theme_override_constants/margin_top = 14
-theme_override_constants/margin_right = 14
-theme_override_constants/margin_bottom = 14
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer" unique_id=1450485848]
 layout_mode = 2
@@ -127,7 +128,7 @@ layout_mode = 2
 
 [node name="Reset" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1495128127]
 layout_mode = 2
-text = "Reset Settings"
+text = "RESET SETTINGS"
 
 [node name="Save" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=255115214]
 layout_mode = 2
