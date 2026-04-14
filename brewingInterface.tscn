@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bg3jhjg66blhh"]
+
+[ext_resource type="Texture2D" uid="uid://s1rpdm0ewqxg" path="res://BrewingAssets/genericItem_color_107.png" id="1_135i0"]
+
+[node name="BrewingInterface" type="CanvasLayer" unique_id=1157997628]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1366508377]
+position = Vector2(1009, 395)
+texture = ExtResource("1_135i0")

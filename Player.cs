@@ -13,13 +13,16 @@ public partial class Player : CharacterBody3D
 	private Vector3 impulseAmount = Vector3.Zero;
     private Game game = null;
 	private float currentTurnSpeed = 0f;
+    private AnimationPlayer brewTime;
 
     //Flags
     bool isSpeedBoostActive = false;
+	bool isBrewing = false;
 
     public override void _Ready()
     {
 		ImpulseTimer = GetNode<Timer>("ImpulseTimer");
+        brewTime = GetNode<AnimationPlayer>("Camera3D/brewingAnimPlayer");
     }
 
     public override void _PhysicsProcess(double delta)
@@ -79,7 +82,27 @@ public partial class Player : CharacterBody3D
         }
 	}
 
-    public void ApplyImpulse(Vector3 impulse, float duration)
+    public override void _Process(double delta)
+	{
+		if (Input.IsActionJustPressed("brew"))
+		{
+			//GD.Print("OH GOD HES BREWING");
+			isBrewing = !isBrewing;
+
+			if (isBrewing)
+			{
+				//GD.Print("Playing brewing anim");
+				brewTime.Play("brew");
+			}
+			else
+			{
+                //GD.Print("PlayingBackwards brewing anim");
+                brewTime.PlayBackwards("brew");
+            }
+		}
+	}
+
+	public void ApplyImpulse(Vector3 impulse, float duration)
 	{
 		isSpeedBoostActive = true;
         impulseAmount = impulse;
