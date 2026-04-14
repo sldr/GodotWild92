@@ -1,0 +1,113 @@
+[gd_scene format=3 uid="uid://k7p4s71gbq53"]
+
+[ext_resource type="Texture2D" uid="uid://pi46l5qqrxv0" path="res://BrewingAssets/genericItem_color_030.png" id="1_6w74v"]
+[ext_resource type="Texture2D" uid="uid://cgo1ph27hsrd1" path="res://BrewingAssets/whitearm.png" id="1_es4gt"]
+[ext_resource type="Script" uid="uid://dc2rfd433hxke" path="res://BrewOs.cs" id="1_exyfb"]
+[ext_resource type="Texture2D" uid="uid://s1rpdm0ewqxg" path="res://BrewingAssets/genericItem_color_107.png" id="2_exyfb"]
+[ext_resource type="Texture2D" uid="uid://ckiytql03spqt" path="res://BrewingAssets/genericItem_color_127.png" id="3_5rtgw"]
+[ext_resource type="Texture2D" uid="uid://1u74u61k7i7h" path="res://BrewingAssets/genericItem_color_121.png" id="3_bu2sk"]
+[ext_resource type="Texture2D" uid="uid://cq3fuciqq6umb" path="res://BrewingAssets/genericItem_color_108.png" id="4_3n2i5"]
+
+[node name="BrewOS" type="Control" unique_id=292561924]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_exyfb")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1756821911]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 14
+
+[node name="HSplitContainer" type="HSplitContainer" parent="MarginContainer" unique_id=1058017808]
+layout_mode = 2
+split_offsets = PackedInt32Array(140)
+drag_area_highlight_in_editor = true
+split_offset = 140
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HSplitContainer" unique_id=2123094613]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Gunpowder" type="Sprite2D" parent="MarginContainer/HSplitContainer/MarginContainer" unique_id=108894909]
+visible = false
+position = Vector2(481, 357.99997)
+rotation = -2.4275692
+scale = Vector2(5.194747, 5.052858)
+texture = ExtResource("1_6w74v")
+
+[node name="Rocketfuel" type="Sprite2D" parent="MarginContainer/HSplitContainer/MarginContainer" unique_id=2100843260]
+visible = false
+position = Vector2(481, 357.99997)
+rotation = -2.4275692
+scale = Vector2(5.194747, 5.052858)
+texture = ExtResource("2_exyfb")
+
+[node name="Gasoline" type="Sprite2D" parent="MarginContainer/HSplitContainer/MarginContainer" unique_id=1747089964]
+visible = false
+position = Vector2(625, 278)
+rotation = -2.4275692
+scale = Vector2(5.194747, 5.052858)
+texture = ExtResource("3_5rtgw")
+
+[node name="Rabitsfoot" type="Sprite2D" parent="MarginContainer/HSplitContainer/MarginContainer" unique_id=2097412028]
+visible = false
+position = Vector2(585, 324.99997)
+rotation = -2.4275692
+scale = Vector2(5.194747, 5.052858)
+texture = ExtResource("4_3n2i5")
+
+[node name="Grog" type="Sprite2D" parent="MarginContainer/HSplitContainer/MarginContainer" unique_id=413642505]
+position = Vector2(425, 799)
+scale = Vector2(5.194747, 5.052858)
+texture = ExtResource("3_bu2sk")
+
+[node name="Arm" type="Sprite2D" parent="MarginContainer/HSplitContainer/MarginContainer" unique_id=567628628]
+modulate = Color(1, 0.8352941, 0.6862745, 1)
+position = Vector2(588, 720.99994)
+scale = Vector2(1.8097826, 2.2392132)
+texture = ExtResource("1_es4gt")
+
+[node name="Panel" type="Panel" parent="MarginContainer/HSplitContainer" unique_id=585236747]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HSplitContainer/Panel" unique_id=1391322818]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="ItemList" type="ItemList" parent="MarginContainer/HSplitContainer/Panel/MarginContainer" unique_id=1403503542]
+layout_mode = 2
+item_count = 4
+max_columns = 2
+same_column_width = true
+icon_scale = 3.6
+item_0/text = "Gunpowder"
+item_0/icon = ExtResource("1_6w74v")
+item_1/text = "Rabbits foot"
+item_1/icon = ExtResource("4_3n2i5")
+item_2/text = "Gasoline"
+item_2/icon = ExtResource("3_5rtgw")
+item_3/text = "Rocket fuel"
+item_3/icon = ExtResource("2_exyfb")
+
+[connection signal="item_activated" from="MarginContainer/HSplitContainer/Panel/MarginContainer/ItemList" to="." method="_on_item_list_item_activated"]
+[connection signal="item_selected" from="MarginContainer/HSplitContainer/Panel/MarginContainer/ItemList" to="." method="_on_item_list_item_selected"]

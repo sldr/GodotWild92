@@ -33,6 +33,11 @@ project/assembly_name="BrewDriving"
 version_control/plugin_name="GitPlugin"
 version_control/autoload_on_startup=true
 
+[global_group]
+
+zombies="Any of the Zombie Types"
+player="The one and only player"
+
 [gui]
 
 theme/default_font_multichannel_signed_distance_field=true

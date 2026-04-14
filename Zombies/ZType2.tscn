@@ -1,12 +1,15 @@
 [gd_scene format=3 uid="uid://ckjwvb0n85mb2"]
 
-[ext_resource type="Script" uid="uid://g2pp6yp4wxqi" path="res://Zombies/ZType1.cs" id="1_7i3rb"]
+[ext_resource type="Script" uid="uid://g2pp6yp4wxqi" path="res://Zombies/Zombie.cs" id="1_7i3rb"]
 [ext_resource type="Texture2D" uid="uid://c8ebmhpib23o1" path="res://Zombies/ZT2_idle.png" id="2_7i3rb"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_i4jx3"]
 
-[node name="ZT2RigidBody3D" type="RigidBody3D" unique_id=1637581006]
+[node name="ZT2RigidBody3D" type="RigidBody3D" unique_id=1637581006 groups=["zombies"]]
+contact_monitor = true
+max_contacts_reported = 3
 script = ExtResource("1_7i3rb")
+ZombieType = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=985144555]
 shape = SubResource("CylinderShape3D_i4jx3")
@@ -14,5 +17,6 @@ shape = SubResource("CylinderShape3D_i4jx3")
 [node name="Node3D" type="Node3D" parent="." unique_id=782181181]
 
 [node name="Sprite3D" type="Sprite3D" parent="Node3D" unique_id=1902703122]
+pixel_size = 0.0181818
 billboard = 1
 texture = ExtResource("2_7i3rb")
