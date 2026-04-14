@@ -31,11 +31,11 @@ public partial class Game : Node3D
                     Mathf.Cos(angle),
                     0,
                     Mathf.Sin(angle)
-                ) * dist;
+                ) * dist + Vector3.Up * 2;
                 Vector3 spawnPosition = GlobalPosition + offset;
                 Zombie z = ZombieType1.Instantiate<Zombie>();
-                z.GlobalPosition = spawnPosition;
                 AddChild(z);
+                z.GlobalPosition = spawnPosition;
             }
         }
 
