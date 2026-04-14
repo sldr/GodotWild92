@@ -5,12 +5,14 @@ public partial class Player : CharacterBody3D
 {
 	//Globals
 	[Export] public float Speed = 5.0f;
-    [Export] public float TurnSpeed = 4.0f;
+    [Export] public float MaxTurnSpeed = 2.0f;
+	[Export] public float TurnAcceleration = 2f;
+	[Export] public float TurnDeacceleration = 4f;
     [Export] public float JumpVelocity = 2.5f;
 	public Timer ImpulseTimer;
 	private Vector3 impulseAmount = Vector3.Zero;
     private Game game = null;
-
+	private float currentTurnSpeed = 0f;
 
     //Flags
     bool isSpeedBoostActive = false;
@@ -43,7 +45,17 @@ public partial class Player : CharacterBody3D
 
 		// Enables turning left and right
 		float turnInput = Input.GetAxis("turn_right", "turn_left");
-		RotateY(turnInput * TurnSpeed * (float)delta);
+		if (Input.IsActionPressed("turn_right") || Input.IsActionPressed("turn_left"))
+		{
+			currentTurnSpeed = Mathf.Lerp(currentTurnSpeed, MaxTurnSpeed, turnInput * TurnAcceleration * (float)delta);
+		}
+		else
+		{
+			currentTurnSpeed = Mathf.Lerp(currentTurnSpeed, 0, TurnDeacceleration * (float)delta);
+		}
+
+		currentTurnSpeed = Mathf.Clamp(currentTurnSpeed, -MaxTurnSpeed, MaxTurnSpeed);
+		RotateY(currentTurnSpeed * (float)delta);
 
         // Constant forward movement
         Vector3 forward = -Transform.Basis.Z.Normalized();
