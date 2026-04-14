@@ -56,6 +56,10 @@ uv1_triplanar = true
 
 [node name="Game" type="Node3D" unique_id=566603410]
 script = ExtResource("1_4c57u")
+InitialSpawnCount = 5000
+player = NodePath("Player")
+ZombieType1 = ExtResource("4_1bvp3")
+ZombieType2 = ExtResource("5_lquwl")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1845646638]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
