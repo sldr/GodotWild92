@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://b37o32jiuxpaw"]
 
-[ext_resource type="Material" uid="uid://dk5bj71v2yukl" path="res://redskypano.tres" id="1_5vw27"]
+[ext_resource type="Material" path="res://redskypano.tres" id="1_5vw27"]
 [ext_resource type="Script" uid="uid://b4oi0urapsih6" path="res://Player.cs" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://dfcuf265r7jvn" path="res://textures/Ground079S_1K-normal.png" id="2_1bvp3"]
-[ext_resource type="Shader" uid="uid://bhj1gu3hdgw2r" path="res://crtvignette.gdshader" id="3_7mycd"]
+[ext_resource type="Shader" path="res://crtvignette.gdshader" id="3_7mycd"]
 [ext_resource type="PackedScene" uid="uid://cyiqii0jwdecp" path="res://pause_menu.tscn" id="3_h2yge"]
 [ext_resource type="Texture2D" uid="uid://bwwrfjnab80hi" path="res://textures/Ground079S_1K-rotated_50%.png" id="3_lquwl"]
 [ext_resource type="PackedScene" uid="uid://bc5swycowvicc" path="res://Zombies/ZType1.tscn" id="4_1bvp3"]
