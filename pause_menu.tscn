@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://cyiqii0jwdecp"]
 
 [ext_resource type="Script" uid="uid://l0nf01be2q3g" path="res://pause_menu.cs" id="1_hdmo1"]
-[ext_resource type="Resource" uid="uid://c5ggo8ajvpxuy" path="res://settings_data.tres" id="2_nwcfo"]
+[ext_resource type="Resource" uid="uid://cg7nlosuxxrdw" path="res://settings_data.tres" id="2_nwcfo"]
+[ext_resource type="Theme" uid="uid://cqds0jix2faj0" path="res://defaultUItheme.tres" id="3_05uyy"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1bvp3"]
 bg_color = Color(0.3529412, 0, 0.011764706, 0.5882353)
@@ -62,6 +63,7 @@ anchors_preset = 9
 anchor_bottom = 1.0
 offset_left = -162.0
 grow_vertical = 2
+theme = ExtResource("3_05uyy")
 
 [node name="Panel" type="Panel" parent="MarginContainer" unique_id=2120902390]
 layout_mode = 2
@@ -83,6 +85,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=109635103]
 layout_mode = 2
+theme = ExtResource("3_05uyy")
 text = "GAME PAUSED"
 horizontal_alignment = 1
 

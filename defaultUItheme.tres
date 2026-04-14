@@ -1,0 +1,6 @@
+[gd_resource type="Theme" format=3 uid="uid://cqds0jix2faj0"]
+
+[ext_resource type="FontFile" uid="uid://ccq4exlh0g6xx" path="res://font/28-days-later/28 Days Later.ttf" id="1_rc4d3"]
+
+[resource]
+default_font = ExtResource("1_rc4d3")
