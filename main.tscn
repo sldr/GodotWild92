@@ -57,7 +57,6 @@ uv1_triplanar = true
 [node name="Game" type="Node3D" unique_id=566603410]
 script = ExtResource("1_4c57u")
 InitialSpawnCount = 5000
-player = NodePath("Player")
 ZombieType1 = ExtResource("4_1bvp3")
 ZombieType2 = ExtResource("5_lquwl")
 
@@ -113,5 +112,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, -10)
 
 [node name="ZT2RigidBody3D" parent="." unique_id=1169433553 instance=ExtResource("5_lquwl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 7, -20)
+
+[node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="." unique_id=1681632622]
 
 [connection signal="timeout" from="Player/ImpulseTimer" to="Player" method="_on_impulse_timer_timeout"]
