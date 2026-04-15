@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://73eljdhoefvg" path="res://textures/chad_arm_dashboard.webp" id="4_kek77"]
 [ext_resource type="PackedScene" uid="uid://cdxq0jixtj1nj" path="res://brewMobile.glb" id="5_dg77c"]
 [ext_resource type="PackedScene" uid="uid://ckjwvb0n85mb2" path="res://Zombies/ZType2.tscn" id="5_lquwl"]
+[ext_resource type="Material" uid="uid://drgm0tmni178j" path="res://addons/psx/materials/mat_psx_default.tres" id="11_dg77c"]
 
 [sub_resource type="Sky" id="Sky_lquwl"]
 sky_material = ExtResource("1_5vw27")
@@ -41,6 +42,142 @@ flip_faces = true
 size = Vector2(2, 2)
 center_offset = Vector3(0, 0, -0.045)
 
+[sub_resource type="Animation" id="Animation_dg77c"]
+resource_name = "POV1ToPOV2"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.574, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.775, -0.04, -0.32)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.574, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.034906585, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_w48qg"]
+resource_name = "POV2ToPOV3"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.574, 1),
+"update": 0,
+"values": [Vector3(-0.775, -0.04, -0.32), Vector3(0, -0.08, -1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.574, 1),
+"update": 0,
+"values": [Vector3(0, -0.034906585, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_vivmo"]
+resource_name = "POV3ToPOV4"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(0.574, 1),
+"update": 0,
+"values": [Vector3(0, -0.08, -1), Vector3(0.5, 1.735, 5.52)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(0.574, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.2443461, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:fov")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(0.574, 1),
+"update": 0,
+"values": [95.0, 75.0]
+}
+
+[sub_resource type="Animation" id="Animation_ycdy4"]
+resource_name = "POV4ToPOV1"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.754, 1),
+"update": 0,
+"values": [Vector3(0.5, 1.735, 5.52), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.754, 1),
+"update": 0,
+"values": [Vector3(-0.2443461, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:fov")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.754, 1),
+"update": 0,
+"values": [75.0, 95.0]
+}
+
 [sub_resource type="Animation" id="Animation_4c57u"]
 length = 0.001
 tracks/0/type = "value"
@@ -66,6 +203,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:fov")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [95.0]
 }
 
 [sub_resource type="Animation" id="Animation_efxa6"]
@@ -96,10 +245,113 @@ tracks/1/keys = {
 "values": [Vector3(0, 0, 0), Vector3(-0.5934119, -1.7627826, -0.02617994)]
 }
 
+[sub_resource type="Animation" id="Animation_2cqfq"]
+resource_name = "brewToPOV2"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.574, 1),
+"update": 0,
+"values": [Vector3(0.025, -0.185, 0.14), Vector3(-0.775, -0.04, -0.32)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.574, 1),
+"update": 0,
+"values": [Vector3(-0.5934119, -1.7627826, -0.02617994), Vector3(0, -0.034906585, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_yaehf"]
+resource_name = "brewToPOV3"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.574, 1),
+"update": 0,
+"values": [Vector3(0.025, -0.185, 0.14), Vector3(0, -0.08, -1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.574, 1),
+"update": 0,
+"values": [Vector3(-0.5934119, -1.7627826, -0.02617994), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_074og"]
+resource_name = "brewToPOV4"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.574, 1),
+"update": 0,
+"values": [Vector3(0.025, -0.185, 0.14), Vector3(0.5, 1.735, 5.52)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.574, 1),
+"update": 0,
+"values": [Vector3(-0.5934119, -1.7627826, -0.02617994), Vector3(-0.2443461, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:fov")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.574, 1),
+"update": 0,
+"values": [95.0, 75.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dg77c"]
 _data = {
+&"POV1ToPOV2": SubResource("Animation_dg77c"),
+&"POV2ToPOV3": SubResource("Animation_w48qg"),
+&"POV3ToPOV4": SubResource("Animation_vivmo"),
+&"POV4ToPOV1": SubResource("Animation_ycdy4"),
 &"RESET": SubResource("Animation_4c57u"),
-&"brew": SubResource("Animation_efxa6")
+&"brew": SubResource("Animation_efxa6"),
+&"brewToPOV2": SubResource("Animation_2cqfq"),
+&"brewToPOV3": SubResource("Animation_yaehf"),
+&"brewToPOV4": SubResource("Animation_074og")
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_efxa6"]
@@ -116,11 +368,12 @@ uv1_scale = Vector3(172.58, 172.58, 172.58)
 uv1_triplanar = true
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_1bvp3"]
+material = ExtResource("11_dg77c")
 
 [node name="Game" type="Node3D" unique_id=566603410]
 script = ExtResource("1_4c57u")
-InitialSpawnCount = 5000
-player = NodePath("Player")
+SpawnDespawnRadius = 100.0
+InitialSpawnCount = 1000
 ZombieType1 = ExtResource("4_1bvp3")
 ZombieType2 = ExtResource("5_lquwl")
 
@@ -138,34 +391,53 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.46, 0)
 script = ExtResource("1_ig7tw")
 Speed = 15.0
 
-[node name="brewMobile" parent="Player" unique_id=1686854063 instance=ExtResource("5_dg77c")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, -1.2, 0)
+[node name="Node3D" type="Node3D" parent="Player" unique_id=1721946459]
 
-[node name="Camera3D" type="Camera3D" parent="Player" unique_id=475457379]
-transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0)
+[node name="Camera3D" type="Camera3D" parent="Player/Node3D" unique_id=475457379]
 h_offset = -0.5
 v_offset = -0.055
 fov = 95.0
 
-[node name="Vignette Effect" type="MeshInstance3D" parent="Player/Camera3D" unique_id=789784255]
+[node name="Vignette Effect" type="MeshInstance3D" parent="Player/Node3D/Camera3D" unique_id=789784255]
 visible = false
 mesh = SubResource("QuadMesh_lquwl")
 
-[node name="Sprite2D" type="Sprite2D" parent="Player/Camera3D" unique_id=147027838]
+[node name="Sprite2D" type="Sprite2D" parent="Player/Node3D/Camera3D" unique_id=147027838]
 visible = false
 top_level = true
 position = Vector2(962, 961.00006)
 scale = Vector2(3.2972507, 1.5205411)
 texture = ExtResource("4_kek77")
 
-[node name="brewingAnimPlayer" type="AnimationPlayer" parent="Player/Camera3D" unique_id=1951828851]
+[node name="brewingAnimPlayer" type="AnimationPlayer" parent="Player/Node3D/Camera3D" unique_id=1951828851]
 libraries/ = SubResource("AnimationLibrary_dg77c")
+
+[node name="brewMobile" parent="Player" unique_id=1686854063 instance=ExtResource("5_dg77c")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, -1.2, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=1391206307]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.53, 0)
 shape = SubResource("BoxShape3D_efxa6")
 
 [node name="ImpulseTimer" type="Timer" parent="Player" unique_id=281964335]
+
+[node name="SpotLight3D1" type="SpotLight3D" parent="Player" unique_id=908565279]
+transform = Transform3D(0.96857035, 0.0010097921, 0.24873771, -0.24780168, 0.09068253, 0.9645574, -0.021582186, -0.99587935, 0.08808264, -0.15, 0.145, -0.359)
+light_color = Color(1, 0.54901963, 0.16470589, 1)
+light_energy = 3.03
+shadow_enabled = true
+spot_range = 1.396
+spot_attenuation = 2.0
+spot_angle = 30.0
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="Player" unique_id=1728610823]
+transform = Transform3D(0.96858317, -1.3732745e-09, -0.24868992, 0.24766287, -0.090789, 0.9645831, -0.022578308, -0.9958702, -0.08793669, 0.15, 0.14499998, -0.359)
+light_color = Color(1, 0.54901963, 0.16470589, 1)
+light_energy = 3.03
+shadow_enabled = true
+spot_range = 1.396
+spot_attenuation = 2.0
+spot_angle = 30.0
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=2108276505]
 transform = Transform3D(0.96, 0, 0, 0, 0.96, 0, 0, 0, 0.96, 0, 0, 0)

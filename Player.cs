@@ -13,16 +13,19 @@ public partial class Player : CharacterBody3D
 	private Vector3 impulseAmount = Vector3.Zero;
     private Game game = null;
 	private float currentTurnSpeed = 0f;
-    private AnimationPlayer brewTime;
+	private AnimationPlayer brewTime;
+	private AnimationPlayer povHandler;
 
     //Flags
     bool isSpeedBoostActive = false;
 	bool isBrewing = false;
+    int cameraPosition = 0;
 
     public override void _Ready()
     {
 		ImpulseTimer = GetNode<Timer>("ImpulseTimer");
-        brewTime = GetNode<AnimationPlayer>("Camera3D/brewingAnimPlayer");
+        brewTime = GetNode<AnimationPlayer>("Node3D/Camera3D/brewingAnimPlayer");
+		povHandler = GetNode<AnimationPlayer>("Node3D/Camera3D/brewingAnimPlayer");
     }
 
     public override void _PhysicsProcess(double delta)
@@ -86,20 +89,65 @@ public partial class Player : CharacterBody3D
 	{
 		if (Input.IsActionJustPressed("brew"))
 		{
-			//GD.Print("OH GOD HES BREWING");
 			isBrewing = !isBrewing;
 
 			if (isBrewing)
 			{
-				//GD.Print("Playing brewing anim");
 				brewTime.Play("brew");
 			}
-			else
+			
+			if (!isBrewing && cameraPosition == 0)
 			{
-                //GD.Print("PlayingBackwards brewing anim");
+                
                 brewTime.PlayBackwards("brew");
             }
-		}
+
+            if (!isBrewing && cameraPosition == 1)
+			{
+				povHandler.PlayBackwards("brewToPOV2");
+			}
+
+            if (!isBrewing && cameraPosition == 2)
+            {
+                povHandler.PlayBackwards("brewToPOV3");
+            }
+
+            if (!isBrewing && cameraPosition == 3)
+            {
+                povHandler.PlayBackwards("brewToPOV4");
+            }
+
+        }
+
+		if (Input.IsActionJustPressed("changePOV"))
+		{
+			cameraPosition++;
+
+			if (cameraPosition == 4)
+			{
+				cameraPosition = 0;
+			}
+
+			if (cameraPosition == 0)
+			{
+				povHandler.Play("POV4ToPOV1");
+			}
+
+            if (cameraPosition == 1)
+            {
+                povHandler.Play("POV1ToPOV2");
+            }
+
+            if (cameraPosition == 2)
+            {
+                povHandler.Play("POV2ToPOV3");
+            }
+
+            if (cameraPosition == 3)
+            {
+                povHandler.Play("POV3ToPOV4");
+            }
+        }
 	}
 
 	public void ApplyImpulse(Vector3 impulse, float duration)
