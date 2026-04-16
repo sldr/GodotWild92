@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Reflection.Metadata.Ecma335;
 
 public partial class Player : CharacterBody3D
 {
@@ -13,7 +14,6 @@ public partial class Player : CharacterBody3D
 	private Vector3 impulseAmount = Vector3.Zero;
     private Game game = null;
 	private float currentTurnSpeed = 0f;
-	private AnimationPlayer brewTime;
 	private AnimationPlayer povHandler;
 
     //Flags
@@ -24,8 +24,7 @@ public partial class Player : CharacterBody3D
     public override void _Ready()
     {
 		ImpulseTimer = GetNode<Timer>("ImpulseTimer");
-        brewTime = GetNode<AnimationPlayer>("Node3D/Camera3D/brewingAnimPlayer");
-		povHandler = GetNode<AnimationPlayer>("Node3D/Camera3D/brewingAnimPlayer");
+		povHandler = GetNode<AnimationPlayer>("Node3D/Camera3D/POVAnimPlayer");
     }
 
     public override void _PhysicsProcess(double delta)
@@ -91,62 +90,73 @@ public partial class Player : CharacterBody3D
 		{
 			isBrewing = !isBrewing;
 
-			if (isBrewing)
+			if (isBrewing && cameraPosition == 0)
 			{
-				brewTime.Play("brew");
+                povHandler.Play("brew");
 			}
-			
-			if (!isBrewing && cameraPosition == 0)
+			else if (!isBrewing && cameraPosition == 0)
 			{
-                
-                brewTime.PlayBackwards("brew");
+                povHandler.PlayBackwards("brew");
             }
 
-            if (!isBrewing && cameraPosition == 1)
+            if (isBrewing && cameraPosition == 1)
+            {
+                povHandler.PlayBackwards("brewToPOV2");
+            }
+            else if (!isBrewing && cameraPosition == 1)
 			{
-				povHandler.PlayBackwards("brewToPOV2");
+                povHandler.Play("brewToPOV2");
 			}
 
-            if (!isBrewing && cameraPosition == 2)
+            if (isBrewing && cameraPosition == 2)
             {
                 povHandler.PlayBackwards("brewToPOV3");
             }
+            else if (!isBrewing && cameraPosition == 2)
+            {
+                povHandler.Play("brewToPOV3");
+            }
 
-            if (!isBrewing && cameraPosition == 3)
+            if (isBrewing && cameraPosition == 3)
             {
                 povHandler.PlayBackwards("brewToPOV4");
+            }
+            else if (!isBrewing && cameraPosition == 3)
+            {
+                povHandler.Play("brewToPOV4");
             }
 
         }
 
 		if (Input.IsActionJustPressed("changePOV"))
 		{
-			cameraPosition++;
-
-			if (cameraPosition == 4)
+            if (!isBrewing)
 			{
-				cameraPosition = 0;
-			}
+				cameraPosition++;
 
-			if (cameraPosition == 0)
+                if (cameraPosition == 4)
+                {
+					cameraPosition = 0;
+                    povHandler.Play("POV4ToPOV1");
+                }
+                else if (cameraPosition == 1)
+                {
+                    povHandler.Play("POV1ToPOV2");
+                }
+                else if (cameraPosition == 2)
+                {
+                    povHandler.Play("POV2ToPOV3");
+                }
+                else if (cameraPosition == 3)
+                {
+                    povHandler.Play("POV3ToPOV4");
+                }
+            }
+
+			else
 			{
-				povHandler.Play("POV4ToPOV1");
+				; /* Do nothing */
 			}
-
-            if (cameraPosition == 1)
-            {
-                povHandler.Play("POV1ToPOV2");
-            }
-
-            if (cameraPosition == 2)
-            {
-                povHandler.Play("POV2ToPOV3");
-            }
-
-            if (cameraPosition == 3)
-            {
-                povHandler.Play("POV3ToPOV4");
-            }
         }
 	}
 

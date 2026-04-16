@@ -256,7 +256,7 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(0.574, 1),
+"transitions": PackedFloat32Array(0.574, 0.574),
 "update": 0,
 "values": [Vector3(0.025, -0.185, 0.14), Vector3(-0.775, -0.04, -0.32)]
 }
@@ -268,7 +268,7 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(0.574, 1),
+"transitions": PackedFloat32Array(0.574, 0.574),
 "update": 0,
 "values": [Vector3(-0.5934119, -1.7627826, -0.02617994), Vector3(0, -0.034906585, 0)]
 }
@@ -284,7 +284,7 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(0.574, 1),
+"transitions": PackedFloat32Array(0.574, 0.574),
 "update": 0,
 "values": [Vector3(0.025, -0.185, 0.14), Vector3(0, -0.08, -1)]
 }
@@ -296,7 +296,7 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(0.574, 1),
+"transitions": PackedFloat32Array(0.574, 0.574),
 "update": 0,
 "values": [Vector3(-0.5934119, -1.7627826, -0.02617994), Vector3(0, 0, 0)]
 }
@@ -312,7 +312,7 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(0.574, 1),
+"transitions": PackedFloat32Array(0.574, 0.574),
 "update": 0,
 "values": [Vector3(0.025, -0.185, 0.14), Vector3(0.5, 1.735, 5.52)]
 }
@@ -324,7 +324,7 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(0.574, 1),
+"transitions": PackedFloat32Array(0.574, 0.574),
 "update": 0,
 "values": [Vector3(-0.5934119, -1.7627826, -0.02617994), Vector3(-0.2443461, 0, 0)]
 }
@@ -336,7 +336,7 @@ tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(0.574, 1),
+"transitions": PackedFloat32Array(0.574, 0.574),
 "update": 0,
 "values": [95.0, 75.0]
 }
@@ -409,7 +409,7 @@ position = Vector2(962, 961.00006)
 scale = Vector2(3.2972507, 1.5205411)
 texture = ExtResource("4_kek77")
 
-[node name="brewingAnimPlayer" type="AnimationPlayer" parent="Player/Node3D/Camera3D" unique_id=1951828851]
+[node name="POVAnimPlayer" type="AnimationPlayer" parent="Player/Node3D/Camera3D" unique_id=1951828851]
 libraries/ = SubResource("AnimationLibrary_dg77c")
 
 [node name="brewMobile" parent="Player" unique_id=1686854063 instance=ExtResource("5_dg77c")]
