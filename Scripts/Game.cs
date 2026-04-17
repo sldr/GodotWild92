@@ -86,21 +86,10 @@ public partial class Game : Node3D
     {
         GD.Print("Spawner");
         //ZombieSpawner(true);
-        GD.Print("Spawner finished");
-        //this.mm = new MultiMesh();
-        //mm.TransformFormat = MultiMesh.TransformFormatEnum.Transform3D;
-        //mm.InstanceCount = 100;
-        //var texture = GD.Load<Texture2D>("res://Zombies/ZT1_idle.png");
-        //var material = new StandardMaterial3D();
-        //material.AlbedoTexture = texture;
-        //material.ShadingMode = BaseMaterial3D.ShadingModeEnum.Unshaded;
-        //material.BillboardMode = BaseMaterial3D.BillboardModeEnum.Enabled;
-        //var quad = new QuadMesh();
-        //quad.Material = material;
-        //mm.Mesh = quad;
         MultiMeshInstance.Visible = true;
         mm = MultiMeshInstance.Multimesh;
         ZombieSpawnerMultiMesh(MultiMeshInstance.Multimesh, true);
+        GD.Print("Spawner finished");
     }
 
 
