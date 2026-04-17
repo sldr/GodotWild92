@@ -18,7 +18,6 @@ config/icon="res://icon.svg"
 [autoload]
 
 GameStats="*uid://bgoa7j0os3s74"
-psx_autoload="uid://u3y0jxl0vtmg"
 
 [display]
 
@@ -33,10 +32,6 @@ project/assembly_name="BrewDriving"
 
 version_control/plugin_name="GitPlugin"
 version_control/autoload_on_startup=true
-
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/psx/plugin.cfg")
 
 [global_group]
 
@@ -83,40 +78,8 @@ changePOV={
 [physics]
 
 3d/physics_engine="Jolt Physics"
-jolt_physics_3d/limits/temporary_memory_buffer_size=64
 jolt_physics_3d/limits/world_boundary_shape_size=4000.0
 
 [rendering]
 
 rendering_device/driver.windows="d3d12"
-
-[shader_globals]
-
-psx_affine_strength={
-"type": "float",
-"value": 1.0
-}
-psx_bit_depth={
-"type": "int",
-"value": 5
-}
-psx_fog_color={
-"type": "color",
-"value": Color(0.5, 0.5, 0.5, 0)
-}
-psx_fog_near={
-"type": "float",
-"value": 20.0
-}
-psx_fog_far={
-"type": "float",
-"value": 10.0
-}
-psx_snap_resolution={
-"type": "float",
-"value": 64.0
-}
-psx_snap_distance={
-"type": "float",
-"value": 0.0
-}

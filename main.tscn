@@ -4,13 +4,11 @@
 [ext_resource type="Material" uid="uid://dk5bj71v2yukl" path="res://redskypano.tres" id="1_5vw27"]
 [ext_resource type="Script" uid="uid://b4oi0urapsih6" path="res://Player.cs" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://dfcuf265r7jvn" path="res://textures/Ground079S_1K-normal.png" id="2_1bvp3"]
-[ext_resource type="Shader" uid="uid://bhj1gu3hdgw2r" path="res://crtvignette.gdshader" id="3_7mycd"]
-[ext_resource type="PackedScene" uid="uid://cyiqii0jwdecp" path="res://pause_menu.tscn" id="3_h2yge"]
 [ext_resource type="Texture2D" uid="uid://bwwrfjnab80hi" path="res://textures/Ground079S_1K-rotated_50%.png" id="3_lquwl"]
 [ext_resource type="PackedScene" uid="uid://bc5swycowvicc" path="res://Zombies/ZType1.tscn" id="4_1bvp3"]
-[ext_resource type="Texture2D" uid="uid://73eljdhoefvg" path="res://textures/chad_arm_dashboard.webp" id="4_kek77"]
 [ext_resource type="PackedScene" uid="uid://cdxq0jixtj1nj" path="res://brewMobile.glb" id="5_dg77c"]
 [ext_resource type="PackedScene" uid="uid://ckjwvb0n85mb2" path="res://Zombies/ZType2.tscn" id="5_lquwl"]
+[ext_resource type="PackedScene" uid="uid://bxs1rpcgg6v0c" path="res://ingredientSprite.tscn" id="9_ycdy4"]
 [ext_resource type="Material" uid="uid://drgm0tmni178j" path="res://addons/psx/materials/mat_psx_default.tres" id="11_dg77c"]
 
 [sub_resource type="Sky" id="Sky_lquwl"]
@@ -31,16 +29,6 @@ volumetric_fog_emission_energy = 22.45
 volumetric_fog_detail_spread = 0.5
 volumetric_fog_ambient_inject = 0.89
 volumetric_fog_sky_affect = 0.626
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7mycd"]
-render_priority = 127
-shader = ExtResource("3_7mycd")
-
-[sub_resource type="QuadMesh" id="QuadMesh_lquwl"]
-material = SubResource("ShaderMaterial_7mycd")
-flip_faces = true
-size = Vector2(2, 2)
-center_offset = Vector3(0, 0, -0.045)
 
 [sub_resource type="Animation" id="Animation_dg77c"]
 resource_name = "POV1ToPOV2"
@@ -391,32 +379,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.46, 0)
 script = ExtResource("1_ig7tw")
 Speed = 15.0
 
-[node name="Node3D" type="Node3D" parent="Player" unique_id=1721946459]
+[node name="CameraContainer" type="Node3D" parent="Player" unique_id=1721946459]
 
-[node name="Camera3D" type="Camera3D" parent="Player/Node3D" unique_id=475457379]
+[node name="Camera3D" type="Camera3D" parent="Player/CameraContainer" unique_id=475457379]
 h_offset = -0.5
 v_offset = -0.055
+current = true
 fov = 95.0
 
-[node name="Vignette Effect" type="MeshInstance3D" parent="Player/Node3D/Camera3D" unique_id=789784255]
-visible = false
-mesh = SubResource("QuadMesh_lquwl")
-
-[node name="Sprite2D" type="Sprite2D" parent="Player/Node3D/Camera3D" unique_id=147027838]
-visible = false
-top_level = true
-position = Vector2(962, 961.00006)
-scale = Vector2(3.2972507, 1.5205411)
-texture = ExtResource("4_kek77")
-
-[node name="POVAnimPlayer" type="AnimationPlayer" parent="Player/Node3D/Camera3D" unique_id=1951828851]
+[node name="POVAnimPlayer" type="AnimationPlayer" parent="Player/CameraContainer/Camera3D" unique_id=1951828851]
 libraries/ = SubResource("AnimationLibrary_dg77c")
+
+[node name="RayCast3D" type="RayCast3D" parent="Player/CameraContainer/Camera3D" unique_id=1223870536]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.46, 0)
+collision_mask = 3
 
 [node name="brewMobile" parent="Player" unique_id=1686854063 instance=ExtResource("5_dg77c")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, -1.2, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=1391206307]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.53, 0)
+transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.02, 0, -1.185, 0)
 shape = SubResource("BoxShape3D_efxa6")
 
 [node name="ImpulseTimer" type="Timer" parent="Player" unique_id=281964335]
@@ -439,6 +421,11 @@ spot_range = 1.396
 spot_attenuation = 2.0
 spot_angle = 30.0
 
+[node name="IngredientsContainer" type="Node3D" parent="Player" unique_id=1210027115]
+
+[node name="Node3D" parent="Player" unique_id=1191759178 instance=ExtResource("9_ycdy4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.53667337, -0.80214596, -0.39711666)
+
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=2108276505]
 transform = Transform3D(0.96, 0, 0, 0, 0.96, 0, 0, 0, 0.96, 0, 0, 0)
 
@@ -448,11 +435,9 @@ shape = SubResource("WorldBoundaryShape3D_ig7tw")
 debug_color = Color(0.3372549, 0.69803923, 0.83137256, 0.61960787)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=429803941]
-transform = Transform3D(400, 0, 0, 0, 400, 0, 0, 0, 400, 0, 0, 0)
+transform = Transform3D(400.00003, 0, 0, 0, 400.00003, 0, 0, 0, 400.00003, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_lquwl")
 mesh = SubResource("PlaneMesh_1bvp3")
-
-[node name="PauseMenu" parent="." unique_id=1922625325 instance=ExtResource("3_h2yge")]
 
 [node name="ZT1RigidBody3D" parent="." unique_id=1637581006 instance=ExtResource("4_1bvp3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.5, -20)

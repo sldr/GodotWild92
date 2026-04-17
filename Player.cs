@@ -24,7 +24,7 @@ public partial class Player : CharacterBody3D
     public override void _Ready()
     {
 		ImpulseTimer = GetNode<Timer>("ImpulseTimer");
-		povHandler = GetNode<AnimationPlayer>("Node3D/Camera3D/POVAnimPlayer");
+		povHandler = GetNode<AnimationPlayer>("CameraContainer/Camera3D/POVAnimPlayer");
     }
 
     public override void _PhysicsProcess(double delta)
@@ -158,7 +158,7 @@ public partial class Player : CharacterBody3D
 				; /* Do nothing */
 			}
         }
-	}
+    }
 
 	public void ApplyImpulse(Vector3 impulse, float duration)
 	{
