@@ -12,13 +12,25 @@ public partial class Game : Node3D
     [Export] public PackedScene ZombieType1;
     [Export] public PackedScene ZombieType2;
     [Export] public MultiMeshInstance3D MultiMeshInstance;
+    [Export] public PackedScene ZombieShell;
+    private int updateZombieGrouping = 0;
     private MultiMesh mm;
+    private int mmInstanceCount = 0;
+    private Dictionary<int, Transform3D> mmZombiePositions = new Dictionary<int, Transform3D>();
+    private Dictionary<int, Zombie> mmZombieShells = new Dictionary<int, Zombie>();
+    private static int onetime = 0;
 
     public void ZombieHit(Zombie zombie)
     {
-        // TODO: Handle zombie hit
-        GD.Print("Zombie HIT!");
-        zombie.ZombieHitHandler();
+        if (zombie == null) {
+            return;
+        }
+        //if (onetime++ <2) {
+            // TODO: Handle zombie hit
+            //GD.Print("Zombie HIT! ", zombie.Index);
+            RemoveZombieInstance(zombie.Index);
+            zombie.ZombieHitHandler();
+        //}
     }
 
     public void ZombieSpawner(bool preGameStart = false)
@@ -63,22 +75,71 @@ public partial class Game : Node3D
                 var transform = Transform3D.Identity;
                 transform.Origin = spawnPosition;
                 mm.SetInstanceTransform(i, transform);
+                mmZombiePositions.Add(i, transform);
+                Zombie shell = ZombieShell.Instantiate<Zombie>();
+                shell.Index = i;
+                AddChild(shell);
+                shell.Transform = transform;
+                mmZombieShells.Add(i, shell);
             }
+            this.mmInstanceCount = mm.InstanceCount;
+        }
+    }
+
+    void RemoveZombieInstance(int index)
+    {
+        if (index == -1) { 
+            return; // Not a MultiMesh Zombie
+        }
+        int last = mmInstanceCount - 1;
+        if (index != last) {
+            mm.SetInstanceTransform(index, mm.GetInstanceTransform(last));
+            mmZombiePositions[index] = mmZombiePositions[last];
+            mmZombieShells[index] = mmZombieShells[last];
+
+
+            var t = mm.GetInstanceTransform(last);
+            t.Basis = Basis.Identity.Scaled(Vector3.Zero);
+            mm.SetInstanceTransform(index, t);
+        }
+        //mm.InstanceCount -= 1;
+        mmInstanceCount--;
+        mmZombiePositions.Remove(last);
+        mmZombieShells.Remove(last);
+        if (mmInstanceCount % 10 == 0) {
+            GD.Print("Instances: ", mmInstanceCount);
         }
     }
 
     public override void _Process(double delta)
     {
-        var zombies = GetTree().GetNodesInGroup("zombies");
-        foreach (Node node in zombies) {
-            if (node is Zombie zombie) {
-                if (zombie != null && player != null) {
-                    float distance = zombie.GlobalPosition.DistanceTo(player.GlobalPosition);
-                    if (distance >= SpawnDespawnRadius) {
-                        zombie.QueueFree();
-                    }
+        //var zombies = GetTree().GetNodesInGroup("zombies");
+        //foreach (Node node in zombies) {
+        //    if (node is Zombie zombie) {
+        //        if (zombie != null && player != null) {
+        //            float distance = zombie.GlobalPosition.DistanceTo(player.GlobalPosition);
+        //            if (distance >= SpawnDespawnRadius) {
+        //                RemoveZombieInstance(zombie.Index);
+        //                zombie.QueueFree();
+        //            }
+        //        }
+        //    }
+        //}
+        // Update the positions of 1/8 of the Zombies on each frame // fix adjust this
+        GD.Print("Doing group: ", updateZombieGrouping);
+        for (int i = 0; i < mmInstanceCount; i++) {
+            if (i % 8 == updateZombieGrouping) {
+                try {
+                    mmZombiePositions[i] = mmZombieShells[i].GlobalTransform;
+                    mm.SetInstanceTransform(i, mmZombiePositions[i]);
+                } catch {
+                    // Ignore
                 }
             }
+        }
+        updateZombieGrouping++;
+        if (updateZombieGrouping >= 8) {
+            updateZombieGrouping = 0;
         }
     }
 
