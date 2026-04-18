@@ -42,28 +42,23 @@ _data = {
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_h0pa3"]
 
-[node name="Bullet" type="Node3D" unique_id=38323853]
+[node name="Bullet" type="RigidBody3D" unique_id=523380372]
+collision_layer = 8
+collision_mask = 8
+gravity_scale = 0.0
+contact_monitor = true
+max_contacts_reported = 1
 script = ExtResource("1_v8qja")
-maxDistance = 500.0
+speed = 5.0
+maxDistance = 200.0
 
 [node name="BulletAnim" type="AnimationPlayer" parent="." unique_id=995239076]
-root_node = NodePath("../Area3D")
 libraries/ = SubResource("AnimationLibrary_t2bd8")
 
-[node name="Area3D" type="Area3D" parent="." unique_id=1469849949]
-transform = Transform3D(0.42, 0, 0, 0, 0.42, 0, 0, 0, 0.42, 0, 0, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=224474784]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=224474784]
 shape = SubResource("SphereShape3D_h0pa3")
 
-[node name="Sprite3D" type="Sprite3D" parent="Area3D" unique_id=405888615]
-visible = false
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=405888615]
+transform = Transform3D(0.2289, 0, 0, 0, 0.2289, 0, 0, 0, 0.2289, 0, 0, 0)
 billboard = 1
 texture = ExtResource("2_t4vbm")
-
-[node name="RayCast3D" type="RayCast3D" parent="Area3D" unique_id=139893814]
-transform = Transform3D(2.3809526, 0, 0, 0, 2.3809526, 0, 0, 0, 2.3809526, 0, 0, 0)
-target_position = Vector3(0, 0, 0)
-
-[node name="Camera3D" type="Camera3D" parent="." unique_id=317325316]
-transform = Transform3D(0.6123725, 0.49999997, -0.6123724, 0.047367185, 0.75, 0.6597397, 0.78914905, -0.43301278, 0.43559584, -1.3538034, 1.4791446, 1.0372183)
