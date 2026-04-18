@@ -10,12 +10,23 @@ public partial class IngredientSprite : Node3D
 	public override void _Ready()
 	{
         hoverHandler = this.GetNode<AnimationPlayer>("IngredientSprite/hoverHandler");
-        GD.Print("IngredientSprite ready!");
     }
 
-	public void _on_ingredient_sprite_mouse_entered()
+	public void _on_ingredient_sprite_input_event(Node A, InputEvent B, Vector3 C, Vector3 D, int E)
 	{
-        GD.Print("MOUSE HOVERED");
+		if (B is InputEventMouseButton leftClick)
+			if (leftClick.ButtonIndex == MouseButton.Left)
+				if (leftClick.Pressed)
+					GD.Print("KABLEWEEE");
+	}
+
+    public void _on_ingredient_sprite_mouse_entered()
+	{
         hoverHandler.Play("whenHover");
     }
+
+	public void _on_ingredient_sprite_mouse_exited()
+	{
+		hoverHandler.PlayBackwards("whenHover");
+	}
 }

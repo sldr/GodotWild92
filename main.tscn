@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://bc5swycowvicc" path="res://Zombies/ZType1.tscn" id="4_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://cdxq0jixtj1nj" path="res://brewMobile.glb" id="5_dg77c"]
 [ext_resource type="PackedScene" uid="uid://ckjwvb0n85mb2" path="res://Zombies/ZType2.tscn" id="5_lquwl"]
+[ext_resource type="PackedScene" uid="uid://uq05yhiq25eq" path="res://brewMachine/modern_coffee_machine.glb" id="8_ycdy4"]
+[ext_resource type="PackedScene" uid="uid://dn6i0wuyxyboc" path="res://crate/wooden_crate.glb" id="9_w48qg"]
 [ext_resource type="PackedScene" uid="uid://bxs1rpcgg6v0c" path="res://ingredientSprite.tscn" id="9_ycdy4"]
 [ext_resource type="Material" uid="uid://drgm0tmni178j" path="res://addons/psx/materials/mat_psx_default.tres" id="11_dg77c"]
 [ext_resource type="Texture2D" uid="uid://k12okfdphmtw" path="res://Zombies/ZT1_idle.png" id="11_efxa6"]
@@ -415,7 +417,7 @@ libraries/ = SubResource("AnimationLibrary_dg77c")
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, -1.2, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=1391206307]
-transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.02, 0, -1.185, 0)
+transform = Transform3D(1.045, 0, 0, 0, 1.045, 0, 0, 0, 1.045, 0, -0.4, 0)
 shape = SubResource("BoxShape3D_efxa6")
 
 [node name="ImpulseTimer" type="Timer" parent="Player" unique_id=281964335]
@@ -438,8 +440,17 @@ spot_range = 1.396
 spot_attenuation = 2.0
 spot_angle = 30.0
 
-[node name="Node3D" parent="Player" unique_id=1191759178 instance=ExtResource("9_ycdy4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.53667337, -0.80214596, -0.39711666)
+[node name="Ingredients" type="Node3D" parent="Player" unique_id=1457618895]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.46, 0)
+
+[node name="Node3D" parent="Player/Ingredients" unique_id=1191759178 instance=ExtResource("9_ycdy4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.56753016, 0.6578541, -0.528335)
+
+[node name="brewMachine" parent="Player" unique_id=587359954 instance=ExtResource("8_ycdy4")]
+transform = Transform3D(0.5, 0, -0.8660255, 0, 1, 0, 0.8660255, 0, 0.5, 0.54718053, -0.7352301, -0.812867)
+
+[node name="brewStand" parent="Player" unique_id=463668610 instance=ExtResource("9_w48qg")]
+transform = Transform3D(-8.960835e-09, 0, 0.205, 0, 0.205, 0, -0.205, 0, -8.960835e-09, 0.6965367, -1.1787162, -0.94451433)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=2108276505]
 transform = Transform3D(0.96, 0, 0, 0, 0.96, 0, 0, 0, 0.96, 0, 0, 0)

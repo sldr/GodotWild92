@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://ds2soqpxeguw7"]
+
+[ext_resource type="Script" uid="uid://c3xtpgh4vti8f" path="res://Bullet.cs" id="1_v8qja"]
+[ext_resource type="Texture2D" uid="uid://44av7x1cmxgl" path="res://icon.svg" id="2_t4vbm"]
+
+[sub_resource type="Animation" id="Animation_2b2rl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_b7duk"]
+resource_name = "bulletFlying"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.100000024),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -20.21)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t2bd8"]
+_data = {
+&"RESET": SubResource("Animation_2b2rl"),
+&"bulletFlying": SubResource("Animation_b7duk")
+}
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_h0pa3"]
+
+[node name="Bullet" type="Node3D" unique_id=38323853]
+script = ExtResource("1_v8qja")
+maxDistance = 500.0
+
+[node name="BulletAnim" type="AnimationPlayer" parent="." unique_id=995239076]
+root_node = NodePath("../Area3D")
+libraries/ = SubResource("AnimationLibrary_t2bd8")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1469849949]
+transform = Transform3D(0.42, 0, 0, 0, 0.42, 0, 0, 0, 0.42, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=224474784]
+shape = SubResource("SphereShape3D_h0pa3")
+
+[node name="Sprite3D" type="Sprite3D" parent="Area3D" unique_id=405888615]
+visible = false
+billboard = 1
+texture = ExtResource("2_t4vbm")
+
+[node name="RayCast3D" type="RayCast3D" parent="Area3D" unique_id=139893814]
+transform = Transform3D(2.3809526, 0, 0, 0, 2.3809526, 0, 0, 0, 2.3809526, 0, 0, 0)
+target_position = Vector3(0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=317325316]
+transform = Transform3D(0.6123725, 0.49999997, -0.6123724, 0.047367185, 0.75, 0.6597397, 0.78914905, -0.43301278, 0.43559584, -1.3538034, 1.4791446, 1.0372183)
