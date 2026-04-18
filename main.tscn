@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bhwqywcg3cx3a" path="res://Zombies/ZShell.tscn" id="4_w48qg"]
 [ext_resource type="PackedScene" uid="uid://cdxq0jixtj1nj" path="res://brewMobile.glb" id="5_dg77c"]
 [ext_resource type="PackedScene" uid="uid://ckjwvb0n85mb2" path="res://Zombies/ZType2.tscn" id="5_lquwl"]
-[ext_resource type="PackedScene" path="res://ingredientSprite.tscn" id="9_ycdy4"]
+[ext_resource type="PackedScene" uid="uid://bxs1rpcgg6v0c" path="res://ingredientSprite.tscn" id="9_ycdy4"]
 [ext_resource type="Material" uid="uid://drgm0tmni178j" path="res://addons/psx/materials/mat_psx_default.tres" id="11_dg77c"]
 [ext_resource type="Texture2D" uid="uid://k12okfdphmtw" path="res://Zombies/ZT1_idle.png" id="11_efxa6"]
 
@@ -345,7 +345,7 @@ _data = {
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_efxa6"]
-size = Vector3(2.72, 2.02, 6.69)
+size = Vector3(128, 75, 300)
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_ig7tw"]
 
@@ -417,7 +417,7 @@ libraries/ = SubResource("AnimationLibrary_dg77c")
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, -1.2, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=1391206307]
-transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.02, 0, -1.185, 0)
+transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.02, 0, -0.5, 0)
 shape = SubResource("BoxShape3D_efxa6")
 
 [node name="ImpulseTimer" type="Timer" parent="Player" unique_id=281964335]
