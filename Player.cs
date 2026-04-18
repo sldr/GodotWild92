@@ -10,6 +10,7 @@ public partial class Player : CharacterBody3D
 	[Export] public float TurnAcceleration = 2f;
 	[Export] public float TurnDeacceleration = 4f;
     [Export] public float JumpVelocity = 2.5f;
+	[Export] public PackedScene bulletScene;
 	public Timer ImpulseTimer;
 	private Vector3 impulseAmount = Vector3.Zero;
     private Game game = null;
@@ -45,7 +46,21 @@ public partial class Player : CharacterBody3D
 		// Handle Jump.
 		if (Input.IsActionJustPressed("jump") && IsOnFloor())
 		{
-			velocity.Y += JumpVelocity;
+			//velocity.Y += JumpVelocity;
+			Bullet bullet = bulletScene.Instantiate<Bullet>();
+            this.AddChild(bullet);
+            Vector3 direction = -this.GlobalTransform.Basis.Z.Normalized();
+			bullet.direction = direction;
+            bullet.Position = new Vector3(-1.4f, -0.25f, -2.2f);
+			var transform = bullet.GlobalTransform;
+			this.RemoveChild(bullet);
+            GetTree().CurrentScene.AddChild(bullet);
+			bullet.GlobalTransform = transform;
+            //bullet.Position = new Vector3 (this.Position.X, 1f, this.Position.Z);
+			Game game = GetTree().CurrentScene as Game;
+            //Vector3 dir = (this.GlobalTransform.Origin - game.GlobalTransform.Origin).Normalized();
+			//bullet.direction = dir;
+            bullet.PlayerRef = this;
         }
 
 		// Enables turning left and right

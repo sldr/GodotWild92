@@ -104,6 +104,7 @@ public partial class Game : Node3D
         }
         //mm.InstanceCount -= 1;
         mmInstanceCount--;
+        mmZombieShells[last].QueueFree();
         mmZombiePositions.Remove(last);
         mmZombieShells.Remove(last);
         if (mmInstanceCount % 10 == 0) {
@@ -126,7 +127,7 @@ public partial class Game : Node3D
         //    }
         //}
         // Update the positions of 1/8 of the Zombies on each frame // fix adjust this
-        GD.Print("Doing group: ", updateZombieGrouping);
+        //GD.Print("Doing group: ", updateZombieGrouping);
         for (int i = 0; i < mmInstanceCount; i++) {
             if (i % 8 == updateZombieGrouping) {
                 try {
